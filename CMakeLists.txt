@@ -143,8 +143,8 @@ add_executable (tools/squash-instruction-models
 	tools/squash-instruction-models.cc
 	)
 
-set_property(TARGET emilpro APPEND PROPERTY OBJECT_DEPENDS binutils)
-set_property(TARGET tools/squash-instruction-models APPEND PROPERTY OBJECT_DEPENDS binutils)
+add_dependencies(emilpro binutils)
+add_dependencies(tools/squash-instruction-models binutils)
 
 set (BASE_LIBS
 	${LIBELF_LIBRARIES}
@@ -168,3 +168,5 @@ target_link_libraries(emilpro
 target_link_libraries(tools/squash-instruction-models
 	${BASE_LIBS}
 	)
+
+install(TARGETS emilpro RUNTIME DESTINATION bin)
